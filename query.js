@@ -1,9 +1,6 @@
 let lookup = process.argv[2];
-
-
 const pg = require("pg");
 const settings = require("./settings"); // settings.json
-
 const client = new pg.Client({
     user: settings.user,
     password: settings.password,
@@ -12,18 +9,22 @@ const client = new pg.Client({
     port: settings.port,
     ssl: settings.ssl
 });
-movieDb = require('./mod.js')(client);
-// let q = `SELECT * FROM famous_people WHERE first_name = '${`lookup`}'`;
-movieDb.searchForActorByName(process.argv[2], (err, actors) => {
+
+movieMod = require('./mod.js')(client);
+
+
+movieMod.searchForActorByName(process.argv[2], (err, actors) => {
     if (err) {
         console.error("Got error", err);
         return;
     }
    console.log(actors);
 })
+
 client.connect((err) => {
     if (err) {
         return console.error("Connection Error", err);
     }
 
 });
+

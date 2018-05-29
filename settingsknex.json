@@ -1,0 +1,8 @@
+{
+    "user": "vagrant",
+    "password": "vagrant",
+    "database": "test_db",
+    "hostname": "localhost",
+    "port": 5432,
+    "ssl": true
+  }
